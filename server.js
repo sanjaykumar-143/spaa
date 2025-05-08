@@ -37,7 +37,7 @@ app.post('/send-otp', async (req, res) => {
   const mailOptions = {
     from: '"SanjuTechProds" <sanjutechprods77@gmail.com>', // Improved format
     to: email,
-    subject: 'SanjuTechProds', // More specific
+    subject: 'SanjuTechProds : Your OTP (Valid for 10 mins)', // More specific
     html: `
     <div style="font-family:Arial,sans-serif; max-width:600px; margin:auto">
         <div style="background:#f8f9fa; padding:20px; text-align:center">
