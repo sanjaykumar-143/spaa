@@ -46,7 +46,7 @@ app.post('/send-otp', async (req, res) => {
       <p>If you did not request this, please contact our support team immediately.</p>
       <p>Best regards,</p>
       <p><strong>SanjuTechProds Team</strong></p>
-      <p><a href="http://www.sanju-techprods.com" target="_blank">sanjutechprods77@gmail.com</a></p>
+      <p>sanjutechprods77@gmail.com</p>
     `,
   };
   
