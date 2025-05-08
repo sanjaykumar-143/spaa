@@ -35,22 +35,33 @@ app.post('/send-otp', async (req, res) => {
 
   // Send OTP via email
   const mailOptions = {
-    from: 'sanjutechprods77@gmail.com', // Use a professional email address
+    from: '"SanjuTechProds" <sanjutechprods77@gmail.com>', // Improved format
     to: email,
-    subject: 'Your OTP for Admin Login - SanjuTechProds',
+    subject: 'SanjuTechProds Admin: Your OTP (Valid for 10 mins)', // More specific
     html: `
-      <p>Dear User,</p>
-      <p>Thank you for choosing <strong>SanjuTechProds</strong>.</p>
-      <p>Your One-Time Password (OTP) for Admin Login is: <strong style="font-size: 18px; color: #007BFF;">${otp}</strong></p>
-      <p>Please use this OTP to access your account. The OTP is valid for a limited time only.</p>
-      <p>If you did not request this, please contact our support team immediately.</p>
-      <p>Best regards,</p>
-      <p><strong>SanjuTechProds Team</strong></p>
-      <p>sanjutechprods77@gmail.com</p>
+    <div style="font-family:Arial,sans-serif; max-width:600px; margin:auto">
+        <div style="background:#f8f9fa; padding:20px; text-align:center">
+            <h2 style="color:#007BFF; margin:0">Thank you for choosing <strong>SanjuTechProds</strong></h2>
+        </div>
+        <div style="padding:20px">
+            <p>Dear User,</p>
+            <p>Your one-time login verification code is:</p>
+            <div style="background:#f8f9fa; padding:15px; text-align:center; margin:15px 0; 
+                 font-size:24px; font-weight:bold; color:#007BFF">
+                ${otp}
+            </div>
+            <p>This code expires in <strong>10 minutes</strong>. Do not share it with anyone.</p>
+            <p>If you didn't request this, please secure your account.</p>
+            <br>
+            <p>Best regards,<br>SanjuTechProds Team</p>
+        </div>
+        <div style="background:#f8f9fa; padding:10px; text-align:center; font-size:12px">
+            <p>© ${new Date().getFullYear()} SanjuTechProds</p>
+        </div>
+    </div>
     `,
-  };
-  
-  
+    text: `Thank you for choosing SanjuTechProds \n\nYour OTP: ${otp}\n\nValid for 10 minutes. Do not share.\n\nIf you didn't request this, please contact us.\n\n--\nSanjuTechProds Team`, // Plain text version
+};
 
   try {
     await transporter.sendMail(mailOptions);
