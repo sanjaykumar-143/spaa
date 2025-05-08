@@ -51,9 +51,9 @@ app.post('/send-otp', async (req, res) => {
                 ${otp}
             </div>
             <p>This code expires in <strong>10 minutes</strong>. Do not share it with anyone.</p>
-            <p>If you didn't request this, please secure your account.</p>
+            <p>If you didn't request this, please contact our support team.</p>
             <br>
-            <p>Best regards,<br>SanjuTechProds Team</p>
+            <p>Best regards,<br>SanjuTechProds Team,<br>sanjutechprods77@gmail.com</p>
         </div>
         <div style="background:#f8f9fa; padding:10px; text-align:center; font-size:12px">
             <p>© ${new Date().getFullYear()} SanjuTechProds</p>
