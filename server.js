@@ -35,9 +35,9 @@ app.post('/send-otp', async (req, res) => {
 
   // Send OTP via email
   const mailOptions = {
-    from: 'sanju-techprods.com', // Use a professional email address
+    from: 'sanjutechprods77@gmail.com', // Use a professional email address
     to: email,
-    subject: 'Your OTP for Admin Login',
+    subject: 'Your OTP for Admin Login - SanjuTechProds',
     html: `
       <p>Dear User,</p>
       <p>Thank you for choosing <strong>SanjuTechProds</strong>.</p>
