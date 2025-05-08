@@ -38,8 +38,18 @@ app.post('/send-otp', async (req, res) => {
     from: 'sanju-techprods.com', // Use a professional email address
     to: email,
     subject: 'Your OTP for Admin Login',
-    text: `Dear User,\n\nThank you for choosing SanjuTechProds.\n\nYour One-Time Password (OTP) for Admin Login is: ${otp}\n\nPlease use this OTP to access your account. The OTP is valid for a limited time only.\n\nIf you did not request this, please contact our support team immediately.\n\nBest regards,\nSanjuTechProds Team\nsanjutechprods77@gmail.com`,
+    html: `
+      <p>Dear User,</p>
+      <p>Thank you for choosing <strong>SanjuTechProds</strong>.</p>
+      <p>Your One-Time Password (OTP) for Admin Login is: <strong style="font-size: 18px; color: #007BFF;">${otp}</strong></p>
+      <p>Please use this OTP to access your account. The OTP is valid for a limited time only.</p>
+      <p>If you did not request this, please contact our support team immediately.</p>
+      <p>Best regards,</p>
+      <p><strong>SanjuTechProds Team</strong></p>
+      <p><a href="http://www.sanju-techprods.com" target="_blank">sanjutechprods77@gmail.com</a></p>
+    `,
   };
+  
   
 
   try {
