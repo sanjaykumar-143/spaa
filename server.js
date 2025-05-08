@@ -10,8 +10,8 @@ app.use(cors());
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'sanjaykumarmullu3@gmail.com', // Your email
-    pass: 'rgfq lvre hwup pfoc', // App-specific password
+    user: 'sanjutechprods77@gmail.com', // Your email
+    pass: 'oxpi dtaq mzww goho', // App-specific password
   },
 });
 
@@ -35,9 +35,9 @@ app.post('/send-otp', async (req, res) => {
 
   // Send OTP via email
   const mailOptions = {
-    from: 'sanjaykumarmullu3@gmail.com',
+    from: 'sanjutechprods77@gmail.com',
     to: email,
-    subject: 'MEGAMOUNT',
+    subject: 'S3Tech',
     text: `Your OTP for Admin Login is: ${otp}`,
   };
 
