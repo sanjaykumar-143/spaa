@@ -35,11 +35,12 @@ app.post('/send-otp', async (req, res) => {
 
   // Send OTP via email
   const mailOptions = {
-    from: 'sanjutechprods77@gmail.com',
+    from: 'sanju-techprods.com', // Use a professional email address
     to: email,
-    subject: 'SanjuTechProds',
-    text: `Your OTP for Admin Login is: ${otp}`,
+    subject: 'Your OTP for Admin Login',
+    text: `Dear User,\n\nThank you for choosing SanjuTechProds.\n\nYour One-Time Password (OTP) for Admin Login is: ${otp}\n\nPlease use this OTP to access your account. The OTP is valid for a limited time only.\n\nIf you did not request this, please contact our support team immediately.\n\nBest regards,\nSanjuTechProds Team\nsanjutechprods77@gmail.com`,
   };
+  
 
   try {
     await transporter.sendMail(mailOptions);
