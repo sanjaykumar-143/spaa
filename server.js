@@ -15,6 +15,57 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+app.post('/send-seal-notification', async (req, res) => {
+  const { to, assignmentId, type } = req.body;
+
+  let subject = '';
+  let html = '';
+  let text = '';
+
+  if (type === 'sealUploaded') {
+    subject = 'Seal Uploaded - Confirmation Needed';
+    html = `
+      <div style="font-family:Arial,sans-serif;max-width:600px;margin:auto">
+        <h2 style="color:#007BFF;">Seal Uploaded</h2>
+        <p>A supervisor has uploaded a seal for assignment <b>${assignmentId}</b>.</p>
+        <p>Please review and sign in the app.</p>
+      </div>
+    `;
+    text = `A supervisor has uploaded a seal for assignment ${assignmentId}. Please review and sign in the app.`;
+  } else if (type === 'openSealRequested') {
+    subject = 'Request to Open Seal';
+    html = `
+      <div style="font-family:Arial,sans-serif;max-width:600px;margin:auto">
+        <h2 style="color:#007BFF;">Request to Open Seal</h2>
+        <p>The supervisor has requested to open the seal for assignment <b>${assignmentId}</b>.</p>
+        <p>Please review and respond in the app.</p>
+      </div>
+    `;
+    text = `Supervisor has requested to open the seal for assignment ${assignmentId}. Please review and respond in the app.`;
+  } else {
+    subject = 'Notification';
+    html = `<p>You have a new notification.</p>`;
+    text = 'You have a new notification.';
+  }
+
+  const mailOptions = {
+    from: '"SanjuTechProds" <sanjutechprods77@gmail.com>',
+    to,
+    subject,
+    html,
+    text,
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log('Notification sent to:', to, 'Type:', type);
+    res.json({ success: true, message: 'Notification sent' });
+  } catch (error) {
+    console.error('Error sending notification:', error);
+    res.status(500).json({ success: false, message: 'Failed to send notification', error: error.message });
+  }
+});
+
 // Store OTPs temporarily
 const otpStore = {};
 
